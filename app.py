@@ -1,3 +1,5 @@
+import cv2
+import numpy as np
 import tensorflow as tf
 
 from flask import Flask, jsonify, request
@@ -28,15 +30,11 @@ def run_inference(image_data):
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def index():
+    return 'Welcome to collision detection!'
 
 @app.route('/predict', methods=['POST'])
 def predict():
-#    data = request.data
     create_graph()
-    #res = {'class': 'no_collision'}
-
-    image_data = tf.gfile.FastGFile('images/frame.jpg', 'rb').read()
-    res = run_inference(image_data)
+    res = run_inference(request.data)
     return jsonify(res)
