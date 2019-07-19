@@ -38,3 +38,6 @@ def predict():
     create_graph()
     res = run_inference(request.data)
     return jsonify(res)
+
+if __name__ == '__main__':
+        app.run()
