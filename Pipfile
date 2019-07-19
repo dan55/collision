@@ -9,6 +9,8 @@ pylint = "*"
 [packages]
 tensorflow = "~=1.14"
 flask = "*"
+requests = "*"
+opencv-python = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.5"
