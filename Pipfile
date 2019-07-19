@@ -10,6 +10,7 @@ pylint = "*"
 tensorflow = "~=1.14"
 flask = "*"
 requests = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.5"
