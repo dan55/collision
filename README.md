@@ -1,5 +1,7 @@
 This serves a tensorflow model for detecting collisions.
 
-The API expects a string representing an image at the /predict endpoint.
+The API expects a string representing an image at the `/predict` endpoint.
 
 See the `test_request.py` script for an example.
+
+A server can be run locally by calling `run.sh`.
