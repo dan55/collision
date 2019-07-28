@@ -1,5 +1,5 @@
 import numpy as np
-import tensorflow as tf
+# import tensorflow as tf
 
 from flask import (
         Flask,
@@ -32,10 +32,15 @@ def run_inference(image_data):
         return {'collision': str(prob_collision), 
                 'no_collision': str(1 - prob_collision)}
 
-
+@app.route('/index')
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/abt')
+def about():
+#     return render_template('index.html')
+    return render_template('about.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
