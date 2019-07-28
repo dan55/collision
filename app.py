@@ -1,5 +1,5 @@
 import numpy as np
-# import tensorflow as tf
+import tensorflow as tf
 
 from flask import (
         Flask,
@@ -39,7 +39,6 @@ def index():
 
 @app.route('/abt')
 def about():
-#     return render_template('index.html')
     return render_template('about.html')
 
 @app.route('/predict', methods=['POST'])
