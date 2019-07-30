@@ -47,7 +47,6 @@ def api():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    create_graph()
     res = run_inference(request.data)
     return jsonify(res)
 
