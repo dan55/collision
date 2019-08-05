@@ -18,18 +18,18 @@ def create_graph():
     with tf.gfile.FastGFile(MODEL, 'rb') as f:
         graph_def = tf.GraphDef()
         graph_def.ParseFromString(f.read())
-        _ = tf.import_graph_def(graph_def, name='')
+        res = tf.import_graph_def(graph_def, name='')
+	return res
 
 def run_inference(image_data):
-    create_graph()
 
-    with tf.Session() as sess:
+    with tf.Session(graph=graph) as sess:
         softmax_tensor = sess.graph.get_tensor_by_name('final_result:0')
         pred = sess.run(softmax_tensor, {'DecodeJpeg/contents:0': image_data})
         top_k = pred[0].argsort()[-len(pred[0]):][::-1]
 
         prob_collision = pred[0][0]
-        return {'collision': str(prob_collision), 
+    return {'collision': str(prob_collision), 
                 'no_collision': str(1 - prob_collision)}
 
 @app.route('/index')
@@ -51,4 +51,5 @@ def predict():
     return jsonify(res)
 
 if __name__ == '__main__':
-        app.run()
+	graph = create_graph()
+    app.run()
