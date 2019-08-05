@@ -8,7 +8,7 @@ from flask import (
         request)
 
 app = Flask(__name__)
-global graph
+
 # some of the code from here: 
 # https://blog.slinto.sk/tensorflow-on-heroku-good-idea-3e6904105892
 
@@ -51,5 +51,6 @@ def predict():
     return jsonify(res)
 
 if __name__ == '__main__':
+	global graph
 	graph = create_graph()
     app.run()
