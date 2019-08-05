@@ -51,5 +51,6 @@ def predict():
     return jsonify(res)
 
 if __name__ == '__main__':
+	global graph
 	graph = create_graph()
     app.run()
